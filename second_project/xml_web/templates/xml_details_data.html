@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>{{section_number}}</title>
     <link rel="stylesheet" href="{% static 'bootstrap-5.0.2-dist/css/bootstrap.css' %}">
     <style>
         head {
@@ -15,7 +15,11 @@
 </head>
 <body>
 <div class="container mt-4">
+    {% if details %}
     {{details|safe}}
+    {% else %}
+    {% include 'utility-404error.html' %}
+    {% endif %}
 </div>
 </body>
 </html>

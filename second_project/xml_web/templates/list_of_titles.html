@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>U.S. Code: Table Of Contents</title>
+    <link rel="stylesheet" href="{% static 'bootstrap-5.0.2-dist/css/bootstrap.css' %}">
+</head>
+<body>
+<div class="container">
+    <form action="" method="post"> {% csrf_token %}
+        <div class="row g-3 align-items-center mt-5">
+            <div class="col-auto">
+                <label for="" class="col-form-label">Title Number</label>
+            </div>
+            <div class="col-auto">
+                <input name="title_number" type="number" min="1" class="form-control" placeholder="Enter Title Number"
+                       required>
+            </div>
+
+            <div class="col-auto">
+                <label for="" class="col-form-label">Section Number</label>
+            </div>
+            <div class="col-auto">
+                <input name="section_number" type="text" min="1" class="form-control" placeholder="Enter Section Number" required>
+            </div>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-danger">GO!</button>
+            </div>
+        </div>
+    </form>
+
+    <h3 class="">U.S. Code: Table Of Contents</h3>
+    <div class="list-group">
+        {% for title in titles %}
+        <li class="list-group-item">
+            <a href="{% url 'read_single_title' title.title_number %}"
+               class="list-group-item list-group-item-action list-group-item-primary">
+                {{title.title_header}}
+            </a>
+        </li>
+        {% endfor %}
+    </div>
+</div>
+</body>
+</html>

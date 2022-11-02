@@ -19,7 +19,9 @@ from xml_data import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.read_xml),
-    path('get-details/<str:n>', views.get_details),
-    path('titles', views.get_list_of_titles),
+
+    path('', views.get_list_of_titles, name="list_of_titles"),
+    path('title/<str:title_number>', views.read_single_title, name="read_single_title"),
+    path('title/<str:title_number>/<str:section_number>', views.section_details, name="section_details"),
+    path('title/search-title', views.search_title, name="search_title"),
 ]
