@@ -1,10 +1,21 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="{% static 'bootstrap-5.0.2-dist/css/bootstrap.css' %}">
+    <style>
+        head {
+            font-size: 40px;
+            font-weight: bold;
+            color: darkcyan;
+        }
+    </style>
 </head>
 <body>
-{{details|safe}}
+<div class="container mt-4">
+    {{details|safe}}
+</div>
 </body>
 </html>

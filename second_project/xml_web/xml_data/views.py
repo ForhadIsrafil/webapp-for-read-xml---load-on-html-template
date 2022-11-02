@@ -1,8 +1,17 @@
 from django.conf import settings
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 import xml.etree.ElementTree as ET
 from bs4 import BeautifulSoup
-from .xml_files.xml_title_link import get_links, get_exact_details
+
+
+from .xml_files.xml_title_link import get_links, get_exact_details, title_list
+
+
+def get_list_of_titles(request):
+    tiles = title_list()
+
+    return HttpResponse(tiles)
 
 
 def read_xml(request):
@@ -22,7 +31,8 @@ def read_xml(request):
     #     link_data.append(temp_dict)
     #     # break
     # # print(link_data)
-    return render(request, 'xml_data_demo.html', {"link_data": get_links()})
+    return render(request, 'xml_data.html', {"link_data": get_links()})
+
 
 def get_details(request, n):
     if n != "":

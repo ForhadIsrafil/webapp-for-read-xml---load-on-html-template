@@ -1,36 +1,31 @@
-<!--<!DOCTYPE html>-->
-<!--<html lang="en">-->
-<!--<head>-->
-<!--    <meta charset="UTF-8">-->
-<!--    <title>Title</title>-->
-<!--</head>-->
-<!--<body>-->
-
-<!--</body>-->
-<!--</html>-->
-
 <!DOCTYPE html>
-<html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'bootstrap-5.0.2-dist/css/bootstrap.css' %}">
+</head>
 <body>
-
-<div id="demo">
-    <h1>Title 1: Full Data</h1>
-    <button type="button" onclick="loadDoc()">Get Content</button>
+<div class="container">
+    <div class="list-group">
+        {% for link in link_data %}
+        {% if link.TYPE != 'SECTION' %}
+        <li class="list-group-item disabled">
+            <a href="" class="list-group-item list-group-item-action list-group-item-primary">
+                {{link.title}}
+            </a>
+        </li>
+        {% else %}
+        <li class="list-group-item">
+            <a href="get-details/{{link.N}}"
+               class="list-group-item list-group-item-action list-group-item-secondary ml-8">
+                {{link.title}}
+            </a>
+        </li>
+        {% endif %}
+        {% endfor %}
+    </div>
 </div>
-
-<script>
-    function loadDoc() {
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("demo").innerHTML =
-                    this.responseText;
-            }
-        };
-        xhttp.open("GET", "ECFR-title2.xml", true);
-        xhttp.send();
-    }
-</script>
-
 </body>
 </html>

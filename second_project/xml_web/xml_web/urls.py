@@ -21,4 +21,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.read_xml),
     path('get-details/<str:n>', views.get_details),
+    path('titles', views.get_list_of_titles),
 ]
