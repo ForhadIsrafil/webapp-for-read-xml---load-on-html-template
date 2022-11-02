@@ -31,7 +31,7 @@ def section_details(request, title_number, section_number):
             "details": get_exact_details(title_number, section_number),
             "section_number": f"Title {title_number}, {section_number}",
         }
-        return render(request, 'xml_details_data.html', context)
+        return render(request, 'section_details_data.html', context)
     else:
         return redirect('/')
 
