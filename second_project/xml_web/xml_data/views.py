@@ -22,7 +22,7 @@ def get_list_of_titles(request):
 
 
 def read_single_title(request, title_number):
-    return render(request, 'xml_data.html', {"link_data": get_links(title_number), "title_number": title_number})
+    return render(request, 'single_title_data.html', {"link_data": get_links(title_number), "title_number": title_number})
 
 
 def section_details(request, title_number, section_number):
