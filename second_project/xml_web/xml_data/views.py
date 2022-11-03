@@ -22,13 +22,16 @@ def get_list_of_titles(request):
 
 
 def read_single_title(request, title_number):
-    return render(request, 'single_title_data.html', {"link_data": get_links(title_number), "title_number": title_number})
+    return render(request, 'single_title_data.html',
+                  {"link_data": get_links(title_number), "title_number": title_number})
 
 
 def section_details(request, title_number, section_number):
     if title_number != "" or section_number != "":
+        details, citations = get_exact_details(title_number, section_number)
         context = {
-            "details": get_exact_details(title_number, section_number),
+            "details": details,
+            "citations": citations,
             "section_number": f"Title {title_number}, {section_number}",
         }
         return render(request, 'section_details_data.html', context)
@@ -43,8 +46,11 @@ def search_title(request):
         title_number = request.POST.get("title_number")
         section_number = request.POST.get("section_number")
         if title_number != "" or section_number != "":
+            details, citations = get_exact_details(title_number, "§ " + section_number)
+
             context = {
-                "details": get_exact_details(title_number, "§ " + section_number),
+                "details": details,
+                "citations": citations,
                 "section_number": f"Title {title_number}, {section_number}",
             }
             return redirect("section_details", title_number=title_number, section_number=section_number)

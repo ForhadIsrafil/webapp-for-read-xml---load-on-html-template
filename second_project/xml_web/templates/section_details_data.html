@@ -20,6 +20,15 @@
     {% else %}
     {% include 'utility-404error.html' %}
     {% endif %}
+
+    <div class="mt-2">
+        {% if citations %}
+        {% for cita in citations %}
+        <span><a class="list-group-item-action list-group-item-info" target="_blank"
+                 href="https://www.federalregister.gov/documents/search?conditions[term]={{cita}}">{{cita}}</a></span>
+        {% endfor %}
+        {% endif %}
+    </div>
 </div>
 </body>
 </html>

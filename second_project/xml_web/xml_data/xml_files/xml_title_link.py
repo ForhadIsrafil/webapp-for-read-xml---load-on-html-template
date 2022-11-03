@@ -3,6 +3,9 @@ from bs4 import BeautifulSoup
 import os
 from glob import glob
 from django.conf import settings
+from pregex.core.groups import Capture
+from pregex.core.classes import AnyDigit, AnyButWhitespace, AnyWhitespace, AnyFrom
+from pregex.core.quantifiers import Exactly, Optional, OneOrMore, AtLeastAtMost
 
 print("ddddddd ", os.path.join(os.path.dirname(__file__)))
 
@@ -41,12 +44,23 @@ def get_exact_details(title_number, section_number):
         data = BeautifulSoup(read_data, "xml")
         exact_data = data.find_all(attrs={"N": f"{section_number}"})
 
-        if exact_data != None:
-            return " ".join(str(d) for d in exact_data)
+        cita = BeautifulSoup(str(exact_data[0]), "xml")
+        citation = cita.find(name="CITA")
+        if citation != None:
+            pattern = (OneOrMore(AnyDigit()) + OneOrMore(AnyWhitespace()) + Capture("FR" + AnyWhitespace()) + OneOrMore(
+                AnyDigit()))
+            citations = pattern.get_matches(citation.text)
+            print(citations)
         else:
-            return ''
+            citations = []
+
+        if exact_data != None:
+            return " ".join(str(d) for d in exact_data), citations
+        else:
+            return '', []
     except Exception as e:
-        return ''
+        print(e)
+        return '', []
 
 
 def title_list():
@@ -70,3 +84,6 @@ def title_list():
             pass
 
     return title_arr
+
+
+''''''
