@@ -7,8 +7,6 @@ from pregex.core.groups import Capture
 from pregex.core.classes import AnyDigit, AnyButWhitespace, AnyWhitespace, AnyFrom
 from pregex.core.quantifiers import Exactly, Optional, OneOrMore, AtLeastAtMost
 
-print("ddddddd ", os.path.join(os.path.dirname(__file__)))
-
 
 def get_links(title_number):
     link_data = []
@@ -50,7 +48,7 @@ def get_exact_details(title_number, section_number):
             pattern = (OneOrMore(AnyDigit()) + OneOrMore(AnyWhitespace()) + Capture("FR" + AnyWhitespace()) + OneOrMore(
                 AnyDigit()))
             citations = pattern.get_matches(citation.text)
-            print(citations)
+            # print(citations)
         else:
             citations = []
 
