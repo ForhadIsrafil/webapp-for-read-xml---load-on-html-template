@@ -12,14 +12,14 @@
         {% for link in link_data %}
         {% if link.TYPE != 'SECTION' %}
         <li class="list-group-item disabled">
-            <a href="" class="list-group-item list-group-item-action list-group-item-primary">
+            <a href="" class="list-group-item list-group-item-action list-group-item-primary fw-bold">
                 {{link.title}}
             </a>
         </li>
         {% else %}
         <li class="ms-5 mb-1">
             <a href="{% url 'section_details' link.title_number link.N %}"
-               class="list-group-item-action list-group-item-light text-md-start">
+               class="list-group-item-action list-group-item-light text-md-start fs-4">
                 {{link.title}}
             </a>
         </li>
