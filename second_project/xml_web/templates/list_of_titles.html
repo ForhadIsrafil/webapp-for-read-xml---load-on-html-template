@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <title>U.S. Code: Table Of Contents</title>
     <link rel="stylesheet" href="{% static 'bootstrap-5.0.2-dist/css/bootstrap.css' %}">
+    <script src="{% static 'bootstrap-5.0.2-dist/js/bootstrap.bundle.js' %}"></script>
 </head>
 <body>
 <div class="container">
@@ -22,7 +23,8 @@
                 <label for="" class="col-form-label font-monospace fw-bold">Section Number:</label>
             </div>
             <div class="col-auto">
-                <input name="section_number" type="text" min="1" class="form-control" placeholder="Enter Section Number" required>
+                <input name="section_number" type="text" min="1" class="form-control" placeholder="Enter Section Number"
+                       required>
             </div>
             <div class="col-auto">
                 <button type="submit" class="btn btn-danger">GO!</button>
