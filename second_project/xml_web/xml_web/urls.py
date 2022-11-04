@@ -23,5 +23,5 @@ urlpatterns = [
     path('', views.get_list_of_titles, name="list_of_titles"),
     path('title/<str:title_number>', views.read_single_title, name="read_single_title"),
     path('title/<str:title_number>/<str:section_number>', views.section_details, name="section_details"),
-    path('title/search-title', views.search_title, name="search_title"),
+    # path('title/search-title', views.search_title, name="search_title"),
 ]

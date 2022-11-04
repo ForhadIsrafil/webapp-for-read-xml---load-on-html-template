@@ -39,20 +39,20 @@ def section_details(request, title_number, section_number):
         return redirect('/')
 
 
-def search_title(request):
-    print(request.POST)
-
-    if request.method == "POST":
-        title_number = request.POST.get("title_number")
-        section_number = request.POST.get("section_number")
-        if title_number != "" or section_number != "":
-            details, citations = get_exact_details(title_number, "§ " + section_number)
-
-            context = {
-                "details": details,
-                "citations": citations,
-                "section_number": f"Title {title_number}, {section_number}",
-            }
-            return redirect("section_details", title_number=title_number, section_number=section_number)
-    else:
-        return redirect('/')
+# def search_title(request):
+#     print(request.POST)
+#
+#     if request.method == "POST":
+#         title_number = request.POST.get("title_number")
+#         section_number = request.POST.get("section_number")
+#         if title_number != "" or section_number != "":
+#             details, citations = get_exact_details(title_number, "§ " + section_number)
+#
+#             context = {
+#                 "details": details,
+#                 "citations": citations,
+#                 "section_number": f"Title {title_number}, {section_number}",
+#             }
+#             return redirect("section_details", title_number=title_number, section_number=section_number)
+#     else:
+#         return redirect('/')
